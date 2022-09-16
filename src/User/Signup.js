@@ -2,10 +2,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Signup.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [name, setname] = useState("");
   const [pass, setpass] = useState("");
+  const navigate = useNavigate();
   const postapi = () => {
     console.log("postapi clicked");
     if (name === "" || pass === "") {
@@ -31,6 +33,7 @@ function Signup() {
           // Do some stuff here
           console.log("data sent to backend successfully");
           console.log(data);
+          navigate("/login");
         })
         .catch((err) => {
           // Catch and display errors
@@ -76,7 +79,7 @@ function Signup() {
         />
       </Form.Group>
       <Button variant="primary" onClick={() => postapi()}>
-        Submit
+        Register
       </Button>
     </Form>
   );
