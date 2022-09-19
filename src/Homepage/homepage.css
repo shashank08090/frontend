@@ -1,0 +1,18 @@
+.homepage{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 10px;
+}
+.card {
+    height: 10vh;
+    width: 100%;
+    background-color: gainsboro;
+    box-shadow:inset;
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 10px;
+}

@@ -1,9 +1,9 @@
 .Footer {
-    background-color: rgb(133, 128, 119);
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
-    height: 100px;
     width: 100%;
-    overflow: hidden;
+    background-color: rgb(176, 156, 156);
+    color: white;
+    text-align: center;
 }
