@@ -28,7 +28,7 @@ function Login() {
       })
       .then((x) => {
         console.log(x);
-        if (x.msg == "failed") {
+        if (x.msg == "fail") {
           alert("login failed");
         } else {
           console.log(x.user.name);

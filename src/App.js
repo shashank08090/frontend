@@ -18,8 +18,17 @@ function CollapsibleExample() {
             <Nav.Link href="" onClick={() => navigate("/signup")}>
               Signup
             </Nav.Link>
-            <Nav.Link href="" onClick={() => navigate("/login")}>
-              Login
+            <Nav.Link
+              href=""
+              onClick={() => {
+                navigate("/login");
+                if (localStorage.developers) {
+                  localStorage.clear();
+                }
+              }}
+            >
+              {/* Login */}
+              {localStorage.developers ? "Logout" : "Login"}
             </Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -34,7 +43,7 @@ function CollapsibleExample() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
+            <Nav.Link href="#deets">button</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Dank memes
             </Nav.Link>
