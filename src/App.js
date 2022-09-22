@@ -43,9 +43,9 @@ function CollapsibleExample() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">button</Nav.Link>
+            <Nav.Link href="#deets">Button 1</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+              Button 2
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
