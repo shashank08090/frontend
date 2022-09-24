@@ -19,11 +19,11 @@ ReactDOM.render(
     <Router>
       <App />
       <Routes>
-        <Route path="/profile" element={<Profile />} />
         <Route element={<PrivateCom />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/demo" element={<Demo />} />
+        <Route path="/profile" element={<Profile />} />
         </Route>
+        <Route path="/demo" element={<Demo />} />
 
           <Route  path="/login" element={<Login />} /> 
             <Route  path="/signup" element={<Signup />} />
