@@ -6,4 +6,7 @@
     background-color: rgb(176, 156, 156);
     color: white;
     text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
