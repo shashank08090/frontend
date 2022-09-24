@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import "./homepage.css";
+import UserEngagement from "./UserEngagement";
 const Homepage = (props) => {
   const [qna, setqna] = useState("");
   const [page, setpage] = useState(1);
@@ -27,7 +28,7 @@ const Homepage = (props) => {
   };
   return (
     <div className="homepage">
-      <div>Homepage</div>
+      <UserEngagement />
       {qna ? (
         <h1>
           {qna.map((result, index) => {
