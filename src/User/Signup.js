@@ -1,13 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Signup.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [name, setname] = useState("");
   const [pass, setpass] = useState("");
   const navigate = useNavigate();
+  let gapi = window.gapi;
   const postapi = () => {
     console.log("postapi clicked");
     if (name === "" || pass === "") {
@@ -41,6 +42,35 @@ function Signup() {
         });
     }
   };
+
+  const onSignIn = (googleUser) => {
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log("Name: " + profile.getName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+  };
+  useEffect(() => {
+    console.log("Hii");
+    insertScript();
+  }, []);
+  const insertScript = () => {
+    const script = document.createElement("script");
+    script.src = "https://apis.google.com/js/platform.js";
+    script.onload = () => {
+      initializeGoogleSigIn();
+    };
+    document.body.appendChild(script);
+  };
+  const initializeGoogleSigIn = () => {
+    window.gapi.load("auth2", () => {
+      let auth2 = gapi.auth2.init({
+        client_id:
+          "89418784231-hdaq5hus3njuuvv2c7ank3suh67ar9r5.apps.googleusercontent.com",
+      });
+      console.log("api inited");
+    });
+  };
   return (
     <Form className="signup m-5 p-5">
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -59,7 +89,6 @@ function Signup() {
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
-
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
@@ -80,7 +109,18 @@ function Signup() {
       </Form.Group>
       <Button variant="primary" onClick={() => postapi()}>
         Register
-      </Button>
+      </Button>{" "}
+      <br />
+      <div className="g-signin2" data-onsuccess="onSignIn">
+        <Button
+          variant="primary"
+          onClick={() => onSignIn()}
+          className="googlelogin"
+        >
+          {" "}
+          Login with Google
+        </Button>
+      </div>
     </Form>
   );
 }
