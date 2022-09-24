@@ -3,9 +3,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
+
+const auth= localStorage.getItem('developers');
+
 function CollapsibleExample() {
   const navigate = useNavigate();
+
+  const logout = ()=>{
+    localStorage.clear();
+    navigate('/signup');
+  }
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -15,10 +23,9 @@ function CollapsibleExample() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="" onClick={() => navigate("/signup")}>
-              Signup
-            </Nav.Link>
-            <Nav.Link
+            <Nav.Link href="" onClick={() => navigate("/profile")}>Profile</Nav.Link>
+            <Nav.Link href="" onClick={() => navigate("/demo")}>Demo</Nav.Link>
+            {/* <Nav.Link
               href=""
               onClick={() => {
                 navigate("/login");
@@ -27,9 +34,20 @@ function CollapsibleExample() {
                 }
               }}
             >
-              {/* Login */}
+              Login
               {localStorage.developers ? "Logout" : "Login"}
+            </Nav.Link> */}
+            
+            {
+              auth ? <Nav.Link onClick={()=>logout()} to="/signup">Logout</Nav.Link> : 
+              
+              <>
+            <Nav.Link href="" onClick={() => navigate("/signup")}> Signup
             </Nav.Link>
+            <Nav.Link href="" onClick={() => navigate("/login")}>Login</Nav.Link>
+            </>
+
+            }
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

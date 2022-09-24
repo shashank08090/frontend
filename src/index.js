@@ -9,17 +9,25 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useRoutes,
 } from "react-router-dom";
+import Profile from "./User/Profile";
+import PrivateCom from "./PrivateCom";
+import Demo from "./User/Demo";
 
 ReactDOM.render(
   <>
     <Router>
       <App />
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Homepage />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route element={<PrivateCom />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/demo" element={<Demo />} />
+        </Route>
+
+          <Route  path="/login" element={<Login />} /> 
+            <Route  path="/signup" element={<Signup />} />
+
       </Routes>
       <Footer />
     </Router>

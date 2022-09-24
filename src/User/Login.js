@@ -28,7 +28,7 @@ function Login() {
       })
       .then((x) => {
         console.log(x);
-        if (x.msg == "fail") {
+        if (x.msg === "fail") {
           alert("login failed");
         } else {
           console.log(x.user.name);
@@ -45,6 +45,7 @@ function Login() {
 
   return (
     <Form className="login m-5 p-5">
+    <h3>Login Page</h3>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
