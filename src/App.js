@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import "./App.css";
 function CollapsibleExample() {
   const navigate = useNavigate();
   const [auth, setAuth] = useState();
@@ -24,7 +24,7 @@ function CollapsibleExample() {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="" onClick={() => navigate("/")}>
-          KillmYBug
+          <img src={require("./Homepage/KillMyBug.jpeg")} className="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -76,7 +76,9 @@ function CollapsibleExample() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Welcome {localStorage.getItem('developers')}</Nav.Link>
+            <Nav.Link href="#deets">
+              Welcome {localStorage.getItem("developers")}
+            </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Button 2
             </Nav.Link>
