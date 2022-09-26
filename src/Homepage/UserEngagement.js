@@ -10,7 +10,10 @@ const UserEngagement = () => {
     console.log(question);
     let result = await fetch("http://localhost:5000/question", {
       method: "post",
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({
+        question,
+        name: localStorage.getItem("developers"),
+      }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -32,6 +35,7 @@ const UserEngagement = () => {
           value={question}
           onChange={(e) => {
             setQuestion(e.target.value);
+            showques("");
           }}
           placeholder="What do you want ?"
         ></input>
