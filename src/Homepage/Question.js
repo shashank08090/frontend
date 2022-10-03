@@ -40,7 +40,8 @@ export default function Question(props) {
     <div className="homepage">
       {showthread && (
         <>
-          <h1>{art.question}</h1>
+          <h1>Question : {art.question}</h1>
+          <p>Answers</p>
           {art.answer.map((elem) => {
             return <p>{elem}</p>;
           })}
