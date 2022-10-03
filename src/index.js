@@ -13,12 +13,15 @@ import {
 import Profile from "./User/Profile";
 import PrivateCom from "./PrivateCom";
 import Demo from "./User/Demo";
+import Question from "./Homepage/Question";
 
 ReactDOM.render(
   <>
     <Router>
       <App />
       <Routes>
+      <Route path="/question" element={<Question />} />
+
         <Route element={<PrivateCom />}>
           <Route path="/" element={<Homepage />} />
         <Route path="/profile" element={<Profile />} />
