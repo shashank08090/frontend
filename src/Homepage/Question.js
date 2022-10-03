@@ -12,10 +12,6 @@ export default function Question(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(art);
-  }, [art]);
-
-  useEffect(() => {
     fetch("http://localhost:5000/answer", {
       method: "GET",
     }).then((result) => {
