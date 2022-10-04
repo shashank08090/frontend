@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
 import Pagination from "./Pagination";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { FaHeart, FaHeartBroken, FaBeer } from "react-icons/fa";
+
 import "./homepage.css";
 
 export default function Question(props) {
@@ -48,25 +55,50 @@ export default function Question(props) {
         </>
       )}
       {qna ? (
-        <h1>
+        <Container fluid>
           {qna.map((result, index) => {
             // console.log(result);
             if (index >= page * 4 - 4 && index <= page * 4)
               return (
                 !showthread && (
-                  <p
-                    className="card"
-                    onClick={() => {
-                      setshowthread(true);
-                      setarticle(result);
-                    }}
-                  >
-                    {result.question}
-                  </p>
+                  <Row className="showquestion">
+                    <Row>
+                      <div className="authordetails">
+                        <span className="profilepic"></span>
+                        <span>{localStorage.getItem("developers")}</span>
+                      </div>
+                    </Row>
+                    <Col
+                      className="card"
+                      onClick={() => {
+                        setshowthread(true);
+                        setarticle(result);
+                      }}
+                    >
+                      {result.question}
+                      <button className="openQuestion">open thread</button>
+                    </Col>
+                    <div className="QuestionEngagement">
+                      <span>
+                        {" "}
+                        <FaHeart /> Likes
+                      </span>
+                      <span>
+                        {" "}
+                        <FaHeartBroken />
+                        Dislikes
+                      </span>
+                      <span>
+                        {" "}
+                        <FaBeer />
+                        Discuss
+                      </span>
+                    </div>
+                  </Row>
                 )
               );
           })}
-        </h1>
+        </Container>
       ) : (
         <h1>still loading.... please wait</h1>
       )}

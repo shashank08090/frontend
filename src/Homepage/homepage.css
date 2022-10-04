@@ -6,13 +6,37 @@
    margin: 10px;
 }
 .card {
-    height: 10vh;
-    width: 100%;
-    background-color: gainsboro;
-    box-shadow:inset;
+    /* background-color: gainsboro; */
     display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+.openQuestion{
+   margin-top:4px;
+border:1px solid lightseagreen;
+height:1rem;
+font-size: 0.5rem;
+border-radius:10%;
+background-color: lightgreen;
+}
+.showquestion{
+   position: relative;
+   padding:10px;
+   display:flex;
+}
+.authordetails{
+   display:flex;
+   justify-content: flex-start;
    flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin: 10px;
+}
+.profilepic {
+   height: 40px;
+   width: 40px;
+   background-color: yellowgreen;
+   border-radius: 50%;
+}
+.QuestionEngagement{
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
 }
