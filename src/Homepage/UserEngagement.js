@@ -38,19 +38,20 @@ const imageUpload = async(e)=>{
   console.log(e.target.files[0]);
   const files = e.target.files
   const formData = new FormData()
-  const payload={"name":question,
-          "testImage":formData
-}
+  // const payload={"name":question,
+  //         "testImage":formData
+
   formData.append('testImage', files[0])
-  await fetch("http://localhost:5000/upload", {
+   fetch("http://localhost:5000/upload", {
     method: 'POST',
-    body: payload,
+    body: formData,
     // headers :{
     //   "Content-Type": "multipart/form-data",
     // },
   });
-  // image1 = await image1.json();
 }
+  // image1 = await image1.json();
+
   return (
     <div>
       {/* <h1>Hiiii User</h1> */}
