@@ -60,7 +60,7 @@ const UserEngagement = () => {
             {" "}
             <input
               className="input"
-              type={"textbox"}
+              type="textbox"
               value={question}
               onChange={(e) => {
                 setQuestion(e.target.value);
