@@ -6,11 +6,17 @@
    margin: 10px;
 }
 .card {
-    /* background-color: gainsboro; */
+    
     display: flex;
-   flex-direction: row;
-   justify-content: space-between;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
    
+}
+.question_card {
+   margin-top:2px;
+   border-radius: 4px;
+   background-color: gainsboro;
 }
 .card_answer {
    display: flex;
@@ -55,6 +61,14 @@ background-color: lightgreen;
    flex-direction: row;
    width: 80vw;
 }
+.question_engagement{
+   margin-top:10px;
+   border-top:1px solid white;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+   width: 60vw;
+}
 .answers_container{
    display: flex;
    justify-content: center;
@@ -64,7 +78,6 @@ background-color: lightgreen;
 .profile_pic{
    height: 40px;
    width: 40px;
-   border:1px solid red;
-   background-color: greenyellow;
+   background-color:greenyellow;
    border-radius:50%;
 }
