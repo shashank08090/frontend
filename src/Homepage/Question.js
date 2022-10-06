@@ -46,13 +46,41 @@ export default function Question(props) {
   return (
     <div className="homepage">
       {showthread && (
-        <>
-          <h1>Question : {art.question}</h1>
+        <Container fluid className="answers_container">
+          <Row>
+            <Col>Question : {art.question}</Col>
+          </Row>
           <p>Answers</p>
           {art.answer.map((elem) => {
-            return <p>{elem}</p>;
+            return (
+              <Row>
+                <span className="profile_details">
+                  <div className="profile_pic"></div>
+                  {localStorage.getItem("developers")}
+                </span>
+                <Col className="card_answer">
+                  {elem}
+                  <div className="answerEngagement">
+                    <span>
+                      {" "}
+                      <FaHeart /> Likes
+                    </span>
+                    <span>
+                      {" "}
+                      <FaHeartBroken />
+                      Dislikes
+                    </span>
+                    <span>
+                      {" "}
+                      <FaBeer />
+                      Comment
+                    </span>
+                  </div>
+                </Col>
+              </Row>
+            );
           })}
-        </>
+        </Container>
       )}
       {qna ? (
         <Container fluid>
