@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import "./homepage.css";
 import UserEngagement from "./UserEngagement";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { FaHeart, FaHeartBroken, FaBeer } from "react-icons/fa";
 const Homepage = (props) => {
   const [qna, setqna] = useState("");
   const [page, setpage] = useState(1);
@@ -27,21 +31,45 @@ const Homepage = (props) => {
     setpage(k);
   };
   return (
-    <div className="homepage">
+    <Container className="homepage">
       <UserEngagement />
       {qna ? (
-        <h1>
+        <Row className="card">
           {qna.map((result, index) => {
             // console.log(result.question);
             if (index > page * 4 - 4 && index <= page * 4)
-              return <p className="card">{result.question}</p>;
+              return (
+                <Col className="question_card">
+                  <span className="profile_details">
+                    <div className="profile_pic"></div>
+                    {localStorage.getItem("developers")} <br />
+                  </span>
+                  {result.question}
+                  <div className="question_engagement">
+                    <span>
+                      {" "}
+                      <FaHeart /> Likes
+                    </span>
+                    <span>
+                      {" "}
+                      <FaHeartBroken />
+                      Dislikes
+                    </span>
+                    <span>
+                      {" "}
+                      <FaBeer />
+                      Comment
+                    </span>
+                  </div>
+                </Col>
+              );
           })}
-        </h1>
+        </Row>
       ) : (
         <h1>still loading.... please wait</h1>
       )}
       <Pagination datafromPagination={datafromPagination} />
-    </div>
+    </Container>
   );
 };
 

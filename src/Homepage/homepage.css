@@ -6,10 +6,25 @@
    margin: 10px;
 }
 .card {
-    /* background-color: gainsboro; */
+    
     display: flex;
-   flex-direction: row;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+}
+.question_card {
+   margin-top:2px;
+   border-radius: 4px;
+   background-color: gainsboro;
+}
+.card_answer {
+   display: flex;
+   flex-direction: column;
    justify-content: space-between;
+   border:1px solid grey;
+   border-radius:10px;
+   margin:2px
 }
 .openQuestion{
    margin-top:4px;
@@ -39,4 +54,30 @@ background-color: lightgreen;
    display: flex;
    justify-content: space-between;
    flex-direction: row;
+}
+.answerEngagement{
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+   width: 80vw;
+}
+.question_engagement{
+   margin-top:10px;
+   border-top:1px solid white;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+   width: 60vw;
+}
+.answers_container{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+.profile_pic{
+   height: 40px;
+   width: 40px;
+   background-color:greenyellow;
+   border-radius:50%;
 }
