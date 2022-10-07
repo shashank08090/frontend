@@ -16,8 +16,12 @@ export default function Question(props) {
   const [art, setarticle] = useState();
   const [page, setpage] = useState(1);
   const [showthread, setshowthread] = useState(false);
+  const [like, setlike] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    lickedBY();
+  }, [like]);
   useEffect(() => {
     fetch("http://localhost:5000/answer", {
       method: "GET",
@@ -42,6 +46,20 @@ export default function Question(props) {
     top: "0",
     right: "0",
     float: "right",
+  };
+  const lickedBY = async () => {
+    console.log("hii");
+    await fetch("http://localhost:5000/likes", {
+      method: "POST",
+      body: JSON.stringify({
+        question: like,
+        likedBy: localStorage.getItem("developers"),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // setCount(1)
   };
   return (
     <div className="homepage">
@@ -109,7 +127,10 @@ export default function Question(props) {
                     <div className="QuestionEngagement">
                       <span>
                         {" "}
-                        <FaHeart /> Likes
+                        <FaHeart
+                          onClick={() => setlike(result.question)}
+                        />{" "}
+                        Likes
                       </span>
                       <span>
                         {" "}
