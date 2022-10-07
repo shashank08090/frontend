@@ -58,7 +58,7 @@ export default function Question(props) {
       method: "POST",
       body: JSON.stringify({
         question: dislike,
-        likedBy: localStorage.getItem("developers"),
+        dislikedBy: localStorage.getItem("developers"),
       }),
       headers: {
         "Content-Type": "application/json",
