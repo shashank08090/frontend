@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import { FaHeart, FaHeartBroken, FaBeer } from "react-icons/fa";
 
 import "./homepage.css";
@@ -17,6 +17,7 @@ export default function Question(props) {
   const [page, setpage] = useState(1);
   const [showthread, setshowthread] = useState(false);
   const navigate = useNavigate();
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     fetch("http://localhost:5000/answer", {
@@ -43,6 +44,20 @@ export default function Question(props) {
     right: "0",
     float: "right",
   };
+  const lickedBY = async()=>{
+    console.log("hii");
+    await fetch("http://localhost:5000/likes", {
+      method: "POST",
+      body: JSON.stringify({
+        question: " ",
+        likedBy: localStorage.getItem("developers"),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // setCount(1)
+  }
   return (
     <div className="homepage">
       {showthread && (
@@ -107,10 +122,10 @@ export default function Question(props) {
                       <button className="openQuestion">open thread</button>
                     </Col>
                     <div className="QuestionEngagement">
-                      <span>
+                    <button onClick={lickedBY}>
                         {" "}
-                        <FaHeart /> Likes
-                      </span>
+                        <FaHeart /> {count}Likes
+                        </button>
                       <span>
                         {" "}
                         <FaHeartBroken />
