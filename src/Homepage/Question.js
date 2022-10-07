@@ -17,11 +17,16 @@ export default function Question(props) {
   const [page, setpage] = useState(1);
   const [showthread, setshowthread] = useState(false);
   const [like, setlike] = useState("");
+  const [dislike, setDislike] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
     lickedBY();
   }, [like]);
+  useEffect(() => {
+    dislikedBY();
+  }, [dislike]);
   useEffect(() => {
     fetch("http://localhost:5000/answer", {
       method: "GET",
@@ -46,6 +51,20 @@ export default function Question(props) {
     top: "0",
     right: "0",
     float: "right",
+  };
+  const dislikedBY = async () => {
+    console.log("hii dis");
+    await fetch("http://localhost:5000/dislikes", {
+      method: "POST",
+      body: JSON.stringify({
+        question: dislike,
+        likedBy: localStorage.getItem("developers"),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // setCount(1)
   };
   const lickedBY = async () => {
     console.log("hii");
@@ -134,7 +153,9 @@ export default function Question(props) {
                       </span>
                       <span>
                         {" "}
-                        <FaHeartBroken />
+                        <FaHeartBroken 
+                        onClick={() => setDislike(result.question)}
+                        />
                         Dislikes
                       </span>
                       <span>
