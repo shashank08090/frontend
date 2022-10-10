@@ -9,7 +9,9 @@ const Login = (props) => {
   const [password, setpass] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(props);
+    props.userInfo == null
+      ? console.log(props.userInfo)
+      : console.log(props.userInfo);
   });
   const login = () => {
     fetch("http://localhost:5000/login", {

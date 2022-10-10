@@ -2,7 +2,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
-  USER_LOGOUT,
+  USER_LOGOUT_SUCCESS,
 } from "../Constants/userConstants";
 export const initialState = {};
 export const userLoginReducer = (state = initialState, action) => {
@@ -17,8 +17,8 @@ export const userLoginReducer = (state = initialState, action) => {
     }
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload };
-    case USER_LOGOUT:
-      return {};
+    case USER_LOGOUT_SUCCESS:
+      return { loading: false, userInfo: null };
     default:
       return state;
   }

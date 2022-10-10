@@ -3,10 +3,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { connect } from "react-redux";
+import { userlogout } from "./react_redux/Actions/actions";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./App.css";
-function CollapsibleExample() {
+function CollapsibleExample(props) {
   const navigate = useNavigate();
   const [auth, setAuth] = useState();
 
@@ -17,6 +19,7 @@ function CollapsibleExample() {
 
   const logout = () => {
     localStorage.clear();
+    props.userlogout();
     navigate("/login");
   };
   return (
@@ -87,5 +90,9 @@ function CollapsibleExample() {
     </Navbar>
   );
 }
-
-export default CollapsibleExample;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userlogout: () => dispatch(userlogout()),
+  };
+};
+export default connect(null, mapDispatchToProps)(CollapsibleExample);

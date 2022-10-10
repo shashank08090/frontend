@@ -11,3 +11,6 @@ export const userlogin = (credentials) =>
     type: USER_LOGIN,
     payload: credentials,
   });
+export const userlogout = () => ({
+  type: USER_LOGOUT,
+});

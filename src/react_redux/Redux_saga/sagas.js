@@ -1,16 +1,22 @@
-import { takeEvery, put, all, takeLatest, call } from "redux-saga/effects";
+import { takeEvery, takeLatest, put, all, call } from "redux-saga/effects";
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGOUT,
   USER_LOGIN,
+  USER_LOGOUT_SUCCESS,
 } from "../Constants/userConstants";
 import { useNavigate } from "react-router-dom";
 
 function* mastersaga() {
   //   console.warn("call api here");
   yield takeEvery(USER_LOGIN, userlogin);
+  yield takeLatest(USER_LOGOUT, userlogout);
+}
+
+function* userlogout() {
+  yield put({ type: "USER_LOGOUT_SUCCESS" });
 }
 
 function* userlogin(action, payload) {
