@@ -10,10 +10,7 @@ const Login = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     console.log(props);
-    if (props.userInfo) {
-      navigate("/");
-    }
-  }, [props.userInfo]);
+  });
   const login = () => {
     fetch("http://localhost:5000/login", {
       method: "post",
@@ -56,6 +53,14 @@ const Login = (props) => {
 
     props.login(payload);
     // props.login();
+    login3();
+  };
+  const login3 = () => {
+    setTimeout(() => {
+      if (localStorage.getItem("developers")) {
+        navigate("/");
+      }
+    }, 1000);
   };
   return (
     <Form className="login m-5 p-5">
@@ -91,7 +96,12 @@ const Login = (props) => {
           label="I have read to terms and conditions"
         />
       </Form.Group>
-      <Button variant="primary" onClick={() => login2()}>
+      <Button
+        variant="primary"
+        onClick={() => {
+          login2();
+        }}
+      >
         Login
       </Button>
     </Form>
