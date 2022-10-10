@@ -11,9 +11,10 @@ import PrivateCom from "./PrivateCom";
 import Demo from "./User/Demo";
 import Question from "./Homepage/Question";
 import Checkout from "./Payment/Checkout";
-
+import store from "./react_redux/Store/store";
+import { Provider } from "react-redux";
 ReactDOM.render(
-  <>
+  <Provider store={store}>
     <Router>
       <App />
       <Routes>
@@ -31,6 +32,6 @@ ReactDOM.render(
       </Routes>
       <Footer />
     </Router>
-  </>,
+  </Provider>,
   document.getElementById("root")
 );

@@ -13,7 +13,6 @@ function CollapsibleExample() {
   useEffect(() => {
     const authtoken = localStorage.getItem("developers");
     setAuth(authtoken);
-    console.log(auth);
   });
 
   const logout = () => {

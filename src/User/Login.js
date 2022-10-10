@@ -1,11 +1,19 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { connect } from "react-redux";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-function Login() {
+import { userlogin } from "../react_redux/Actions/actions";
+const Login = (props) => {
   const [name, setname] = useState("");
   const [password, setpass] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    console.log(props);
+    if (props.userInfo) {
+      navigate("/");
+    }
+  }, [props.userInfo]);
   const login = () => {
     fetch("http://localhost:5000/login", {
       method: "post",
@@ -33,7 +41,6 @@ function Login() {
         } else {
           console.log(x.user.name);
           localStorage.setItem("developers", x.user.name);
-          navigate("/");
         }
       })
 
@@ -43,9 +50,16 @@ function Login() {
       });
   };
 
+  const login2 = () => {
+    // props.login({ name: name, password: password });
+    const payload = { name: name, password: password };
+
+    props.login(payload);
+    // props.login();
+  };
   return (
     <Form className="login m-5 p-5">
-    <h3>Login Page</h3>
+      <h3>Login Page</h3>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -77,11 +91,24 @@ function Login() {
           label="I have read to terms and conditions"
         />
       </Form.Group>
-      <Button variant="primary" onClick={() => login()}>
+      <Button variant="primary" onClick={() => login2()}>
         Login
       </Button>
     </Form>
   );
-}
+};
 
-export default Login;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    userInfo: state.userInfo,
+  };
+};
+const mapDispatchToProps = (dispatch, payload) => {
+  console.log(payload);
+  console.log(dispatch);
+  return {
+    login: (payload) => dispatch(userlogin(payload)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
