@@ -66,7 +66,7 @@ function* userlogin(action, payload) {
   } else {
     yield put({
       type: "USER_LOGIN_SUCCESS",
-      payload: localStorage.getItem("developers"),
+      payload: action.payload.name,
     });
   }
 }
