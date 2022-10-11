@@ -88,13 +88,11 @@ const UserEngagement = () => {
         </Row>
       </Container>
       <div>
-        <h4>
-          {ques} <button className="addPhoto">Add photo</button>
-        </h4>
-      </div>
-      <div className="photo">
-        <input type={"file"} name={"testImage"} onChange={imageUpload} />
-        <button onClick={postPhoto}>Upload Photo</button>
+         <h4>
+          {ques} 
+          <input className="inputfield" type={"file"} name={"testImage"} onChange={imageUpload} />
+          {/* <button onClick={postPhoto}>Upload Photo</button> */}
+          </h4>
       </div>
     </div>
   );
