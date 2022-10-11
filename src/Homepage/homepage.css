@@ -81,3 +81,18 @@ background-color: lightgreen;
    background-color:greenyellow;
    border-radius:50%;
 }
+.comment_section {
+   height: 30px;
+   width: 80vw;
+   border:1px solid white;
+   border-radius:10px;
+   display:flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+.comment_sec{
+   width: 80vw;
+   border:1px solid grey;
+   border-radius:10px;
+}
