@@ -18,6 +18,7 @@ export default function Question(props) {
   const [showthread, setshowthread] = useState(false);
   const [like, setlike] = useState("");
   const [dislike, setDislike] = useState("");
+  const [comment, setshowcomment] = useState(false);
 
   const navigate = useNavigate();
 
@@ -153,17 +154,22 @@ export default function Question(props) {
                       </span>
                       <span>
                         {" "}
-                        <FaHeartBroken 
-                        onClick={() => setDislike(result.question)}
+                        <FaHeartBroken
+                          onClick={() => setDislike(result.question)}
                         />
                         Dislikes
                       </span>
                       <span>
                         {" "}
-                        <FaBeer />
+                        <FaBeer onClick={() => setshowcomment(!comment)} />
                         Discuss
                       </span>
                     </div>
+                    {comment && (
+                      <div className="comment_section">
+                        <input type="text" className="comment_sec"></input>
+                      </div>
+                    )}
                   </Row>
                 )
               );
