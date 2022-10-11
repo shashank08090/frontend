@@ -19,6 +19,7 @@ export default function Question(props) {
   const [like, setlike] = useState("");
   const [dislike, setDislike] = useState("");
   const [comment, setshowcomment] = useState(false);
+  const [commentid, setcommmmentid] = useState(null);
 
   const navigate = useNavigate();
 
@@ -127,7 +128,7 @@ export default function Question(props) {
             if (index >= page * 4 - 4 && index <= page * 4)
               return (
                 !showthread && (
-                  <Row className="showquestion">
+                  <Row className="showquestion" key={index}>
                     <Row>
                       <div className="authordetails">
                         <span className="profilepic"></span>
@@ -161,11 +162,16 @@ export default function Question(props) {
                       </span>
                       <span>
                         {" "}
-                        <FaBeer onClick={() => setshowcomment(!comment)} />
-                        Discuss
+                        <FaBeer
+                          onClick={() => {
+                            setcommmmentid(index);
+                            setshowcomment(!comment);
+                          }}
+                        />
+                        Comment
                       </span>
                     </div>
-                    {comment && (
+                    {commentid == index && comment && (
                       <div className="comment_section">
                         <input type="text" className="comment_sec"></input>
                       </div>
