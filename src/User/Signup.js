@@ -43,7 +43,7 @@ function Signup() {
   };
   return (
     <Form className="signup m-5 p-5">
-    <h3>Register Yourself</h3>
+      <h3>Register Yourself</h3>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -51,7 +51,7 @@ function Signup() {
           type="email"
           width="50%"
           placeholder="Enter email"
-          onBlur={(e) => {
+          onChange={(e) => {
             setname(e.target.value);
             console.log(name);
           }}
@@ -67,7 +67,7 @@ function Signup() {
           type="password"
           id="password"
           placeholder="Password"
-          onBlur={(e) => {
+          onChange={(e) => {
             setpass(e.target.value);
             console.log(pass);
           }}
